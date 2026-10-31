@@ -1,23 +1,32 @@
 import 'package:flutter/material.dart';
 
 class Eyes extends StatelessWidget {
-  const Eyes({super.key});
+  final Offset fingerPosition;
+
+  const Eyes({
+    super.key,
+    required this.fingerPosition,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: const [
-        Eye(),
+      children: [
+        Eye(fingerPosition:fingerPosition),
         SizedBox(width: 40),
-        Eye(),
+        Eye(fingerPosition:fingerPosition),
       ],
     );
   }
 }
 
 class Eye extends StatelessWidget {
-  const Eye({super.key});
+  final Offset fingerPosition;
+  
+  const Eye({super.key,
+       required this.fingerPosition,
+       });
 
   @override
   Widget build(BuildContext context) {
@@ -28,16 +37,22 @@ class Eye extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(30),
       ),
-      child: Center(
-        child: Container(
-          width: 22,
-          height: 22,
-          decoration: const BoxDecoration(
-            color: Color(0xFF6D4C41),
-            shape: BoxShape.circle,
+      child: Stack(
+        children: [
+          Positioned(
+            left: 34,
+            top: 19,
+            child: Container(
+              width: 22,
+              height: 22,
+              decoration: const BoxDecoration(
+                color: Color(0xFF6D4C41),
+                shape: BoxShape.circle,
+              ),
+            ),
           ),
+        ],
         ),
-      ),
-    );
+      );
+   }
   }
-}
