@@ -1,12 +1,15 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import '../models/expression.dart';
 
 class Eyes extends StatelessWidget {
   final Offset fingerPosition;
+  final Expression expression;
 
   const Eyes({
     super.key,
     required this.fingerPosition,
+    this.expression = Expression.neutral,
   });
 
   @override
@@ -14,9 +17,13 @@ class Eyes extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Eye(fingerPosition: fingerPosition),
+        Eye(fingerPosition: fingerPosition,
+           expression: expression,
+           ),
         const SizedBox(width: 40),
-        Eye(fingerPosition: fingerPosition),
+        Eye(fingerPosition: fingerPosition,
+           expression: expression,
+           ),
       ],
     );
   }
@@ -24,10 +31,12 @@ class Eyes extends StatelessWidget {
 
 class Eye extends StatefulWidget {
   final Offset fingerPosition;
+  final Expression expression;
 
   const Eye({
     super.key,
     required this.fingerPosition,
+    this.expression = Expression.neutral,
   });
 
   @override
