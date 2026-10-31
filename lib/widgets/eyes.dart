@@ -90,7 +90,9 @@ class _EyeState extends State<Eye> {
             curve: Curves.easeOut,
             left: (eyeWidth - pupilSize) / 2 + pupilOffset.dx,
             top: (eyeHeight - pupilSize) / 2 + pupilOffset.dy,
-            child: Container(
+            child: Stack(
+              children: [
+            Container(
               width: pupilSize,
               height: pupilSize,
               decoration: const BoxDecoration(
@@ -98,7 +100,22 @@ class _EyeState extends State<Eye> {
                 shape: BoxShape.circle,
               ),
             ),
-          ),
+
+                Positioned(
+                  left: 5,
+                  top: 4,
+                  child: Container(
+                    width: 5,
+                    height: 5,
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                ),
+             ],
+           ),
+         ),
         ],
       ),
     );
