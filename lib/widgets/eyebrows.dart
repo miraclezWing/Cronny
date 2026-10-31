@@ -29,33 +29,43 @@ class Eyebrows extends StatelessWidget {
 
   switch (expression) {
     case Expression.happy:
-      angle = left ? -0.2 : 0.2;
+      angle = left ? -12 : 12;
       break;
 
     case Expression.angry:
-      angle = left ? 0.3 : -0.3;
+      angle = left ? 18 : -18;
       break;
 
     case Expression.sleepy:
       angle = 0;
       break;
 
+    case Expression.thinking:
+      angle = left ? 12 : 0;
+      break;
+
     default:
       angle = 0;
   }
-
-  return AnimatedRotation(
-    turns: angle / (2 * 3.14159),
+  return AnimatedContainer(
+  duration: const Duration(milliseconds: 250),
+  curve: Curves.easeInOut,
+  margin: EdgeInsets.only(
+    bottom: expression == Expression.happy ? 4 : 0,
+  ),
+  child: AnimatedRotation(
+    turns: angle / 360,
     duration: const Duration(milliseconds: 250),
     curve: Curves.easeInOut,
     child: Container(
-      width: 20,
+      width: 22,
       height: 3,
       decoration: BoxDecoration(
         color: Colors.black87,
         borderRadius: BorderRadius.circular(10),
       ),
     ),
-  );
-  }
+  ),
+);
+}
 }
