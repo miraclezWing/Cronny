@@ -49,3 +49,4 @@ app.*.map.json
 *.zip
 .gradle/
 build/
+cronny_new/
