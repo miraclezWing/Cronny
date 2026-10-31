@@ -85,7 +85,9 @@ class _EyeState extends State<Eye> {
       ),
       child: Stack(
         children: [
-          Positioned(
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 70),
+            curve: Curves.easeOut,
             left: (eyeWidth - pupilSize) / 2 + pupilOffset.dx,
             top: (eyeHeight - pupilSize) / 2 + pupilOffset.dy,
             child: Container(
